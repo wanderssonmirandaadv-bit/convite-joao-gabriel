@@ -1,839 +1,402 @@
+
+
+Modo IA
+Tudo
+Imagens
+Vídeos
+Notícias
+Maps
+Shopping
+Livros
+Voos
+Finanças
+Como você precisa de um convite digital interativo de alta qualidade, ideal para enviar no WhatsApp e com botões clicáveis que direcionam seus convidados direto para a confirmação de presença e localização, preparei o modelo interativo perfeito para o aniversário de 7 anos do João Gabriel.
+Abaixo você tem o código-fonte interativo completo em formato profissional, estruturado para que os botões funcionem de forma prática em qualquer tela de celular.
+html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#080808">
-<title>Missão Ninja — João Gabriel</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;600;700;800&display=swap');
-
-*{box-sizing:border-box;margin:0;padding:0}
-
-html{scroll-behavior:smooth}
-
-body{
-  min-height:100vh;
-  overflow-x:hidden;
-  font-family:Poppins,sans-serif;
-  color:#fff;
-  background:
-    radial-gradient(circle at 50% 20%,#b93600 0,transparent 30%),
-    linear-gradient(180deg,#050505,#17100d 55%,#050505);
-}
-
-/* FUNDO */
-#efeitos{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  overflow:hidden;
-  z-index:1;
-}
-
-.particula{
-  position:absolute;
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:#ff7a00;
-  opacity:.65;
-  animation:subir linear infinite;
-}
-
-@keyframes subir{
-  from{transform:translateY(110vh);opacity:0}
-  20%{opacity:.7}
-  to{transform:translateY(-20vh);opacity:0}
-}
-
-/* SHURIKENS */
-.shuriken{
-  position:absolute;
-  font-size:34px;
-  animation:voar linear infinite;
-  filter:drop-shadow(0 0 7px #ff6a00);
-}
-
-@keyframes voar{
-  0%{transform:translate(-15vw,-20vh) rotate(0deg)}
-  100%{transform:translate(120vw,120vh) rotate(900deg)}
-}
-
-/* ABERTURA */
-.tela{
-  position:relative;
-  z-index:3;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:25px 15px;
-}
-
-.convite{
-  position:relative;
-  width:100%;
-  max-width:470px;
-  overflow:hidden;
-  border-radius:32px;
-  border:2px solid #ff6b00;
-  background:rgba(8,8,8,.94);
-  box-shadow:
-    0 0 50px rgba(255,85,0,.3),
-    0 25px 80px rgba(0,0,0,.8);
-}
-
-/* LUZ */
-.luz{
-  position:absolute;
-  width:280px;
-  height:280px;
-  border-radius:50%;
-  background:#ff5b00;
-  filter:blur(90px);
-  opacity:.18;
-  top:-120px;
-  left:50%;
-  transform:translateX(-50%);
-}
-
-.conteudo{
-  position:relative;
-  z-index:5;
-  padding:30px 22px;
-  text-align:center;
-}
-
-/* NINJA DECORATIVO */
-.ninja{
-  width:190px;
-  height:190px;
-  margin:0 auto 10px;
-  position:relative;
-  animation:flutuar 3s ease-in-out infinite;
-}
-
-.cabeca{
-  position:absolute;
-  width:125px;
-  height:125px;
-  background:#ef8b45;
-  border-radius:50%;
-  left:33px;
-  top:20px;
-  border:5px solid #151515;
-}
-
-.cabelo{
-  position:absolute;
-  width:135px;
-  height:70px;
-  left:28px;
-  top:5px;
-  background:#151515;
-  border-radius:60% 60% 20% 20%;
-}
-
-.faixa{
-  position:absolute;
-  width:140px;
-  height:23px;
-  left:25px;
-  top:62px;
-  background:#171717;
-  border:3px solid #333;
-  z-index:4;
-}
-
-.simbolo{
-  position:absolute;
-  left:78px;
-  top:64px;
-  font-size:17px;
-  z-index:5;
-}
-
-.olho{
-  position:absolute;
-  width:15px;
-  height:8px;
-  background:white;
-  border-radius:50%;
-  top:91px;
-  z-index:5;
-}
-
-.olho.esq{left:60px}
-.olho.dir{left:105px}
-
-.corpo{
-  position:absolute;
-  width:120px;
-  height:70px;
-  left:35px;
-  top:120px;
-  background:#171717;
-  border-radius:50px 50px 15px 15px;
-  border:4px solid #ef5c00;
-}
-
-@keyframes flutuar{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-9px)}
-}
-
-/* TEXTOS */
-.missao{
-  color:#ff9b42;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:3px;
-  margin-bottom:10px;
-}
-
-h1{
-  font-family:Bangers,cursive;
-  color:#ff7410;
-  font-size:55px;
-  letter-spacing:2px;
-  line-height:.95;
-  text-shadow:4px 4px #7d2100;
-}
-
-.sub{
-  margin-top:9px;
-  color:#ddd;
-  font-size:14px;
-}
-
-.idade{
-  width:100px;
-  height:100px;
-  margin:22px auto;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  background:linear-gradient(145deg,#ffad19,#e63d00);
-  border:5px solid #ffc75a;
-  box-shadow:0 0 30px rgba(255,100,0,.4);
-}
-
-.idade strong{
-  font-family:Bangers;
-  font-size:50px;
-  line-height:.8;
-}
-
-.idade span{
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:2px;
-}
-
-.frase{
-  font-size:15px;
-  line-height:1.7;
-  color:#ddd;
-  margin-bottom:22px;
-}
-
-.destaque{color:#ff8b2b;font-weight:800}
-
-/* INFORMAÇÕES */
-.info{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  text-align:left;
-  padding:13px;
-  margin:9px 0;
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:15px;
-}
-
-.icone{
-  min-width:45px;
-  height:45px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#e95309;
-  border-radius:12px;
-  font-size:21px;
-}
-
-.info small{
-  color:#999;
-  display:block;
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.info strong{
-  display:block;
-  font-size:14px;
-  margin-top:2px;
-}
-
-/* BOTÕES */
-.botoes{
-  display:grid;
-  gap:10px;
-  margin-top:18px;
-}
-
-button{
-  width:100%;
-  padding:15px;
-  border:0;
-  border-radius:13px;
-  font-family:Poppins;
-  font-weight:800;
-  font-size:14px;
-  color:#fff;
-  cursor:pointer;
-  transition:.2s;
-}
-
-button:active{transform:scale(.97)}
-
-.laranja{
-  background:linear-gradient(135deg,#ff8200,#e43d00);
-  box-shadow:0 8px 25px rgba(255,70,0,.22);
-}
-
-.verde{
-  background:#1fc967;
-}
-
-.escuro{
-  background:#252525;
-  border:1px solid #444;
-}
-
-/* CONFIRMAÇÃO */
-.area{
-  margin-top:27px;
-  padding-top:24px;
-  border-top:1px solid rgba(255,120,0,.25);
-}
-
-.area h2{
-  font-size:20px;
-  margin-bottom:4px;
-}
-
-.area p{
-  color:#999;
-  font-size:11px;
-  margin-bottom:14px;
-}
-
-input,select{
-  width:100%;
-  padding:14px;
-  border-radius:11px;
-  border:1px solid #444;
-  background:#121212;
-  color:#fff;
-  outline:none;
-  font-family:Poppins;
-  margin-bottom:10px;
-}
-
-input:focus,select:focus{
-  border-color:#ff6a00;
-}
-
-.erro{
-  display:none;
-  color:#ff7070;
-  font-size:11px;
-  text-align:left;
-  margin:-6px 0 8px;
-}
-
-#msg{
-  margin-top:12px;
-  font-size:12px;
-  font-weight:700;
-  min-height:18px;
-}
-
-.rodape{
-  margin-top:24px;
-  color:#777;
-  font-size:10px;
-  line-height:1.7;
-}
-
-/* MÚSICA */
-.music{
-  position:fixed;
-  z-index:20;
-  right:15px;
-  bottom:15px;
-  width:auto;
-  padding:12px 16px;
-  border-radius:50px;
-  background:#ff6500;
-  box-shadow:0 5px 20px rgba(0,0,0,.5);
-  font-size:12px;
-}
-
-/* RESPONSIVO */
-@media(max-width:380px){
-  h1{font-size:47px}
-  .conteudo{padding:25px 17px}
-  .ninja{transform:scale(.9)}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Virtual do João Gabriel</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .convite-container {
+            width: 100%;
+            max-width: 450px;
+            background: linear-gradient(135deg, #1e1e24 0%, #0f0f12 100%);
+            border: 3px solid #ff6700;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+        .header-banner {
+            background: #ff6700;
+            padding: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #000;
+            border-bottom: 4px solid #fff;
+        }
+        .conteudo {
+            padding: 25px 20px;
+        }
+        h1 {
+            color: #ff6700;
+            font-size: 2.2rem;
+            margin: 10px 0 5px 0;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px #000, -1px -1px 0px #fff;
+        }
+        .idade {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            background: #333;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 1px solid #ff6700;
+            margin-bottom: 20px;
+        }
+        .mensagem {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px dashed #ff6700;
+        }
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .info-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #ff6700;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .info-val {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .info-full {
+            grid-column: span 2;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 10px;
+            margin-top: 5px;
+        }
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ff6700;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 14px;
+            border-radius: 30px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 103, 0, 0.4);
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        .btn-wpp {
+            background: #25d366;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+        .icon {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        .footer-tag {
+            font-size: 1.1rem;
+            color: #ff6700;
+            font-style: italic;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
-
 <body>
 
-<div id="efeitos"></div>
-
-<div class="tela">
-  <section class="convite">
-
-    <div class="luz"></div>
-
-    <div class="conteudo">
-
-      <div class="missao">
-        ⚡ MISSÃO NINJA ⚡
-      </div>
-
-      <!-- PERSONAGEM NINJA ORIGINAL -->
-      <div class="ninja">
-        <div class="cabelo"></div>
-        <div class="cabeca"></div>
-        <div class="faixa"></div>
-        <div class="simbolo">✦</div>
-        <div class="olho esq"></div>
-        <div class="olho dir"></div>
-        <div class="corpo"></div>
-      </div>
-
-      <h1>JOÃO GABRIEL</h1>
-
-      <p class="sub">
-        Você foi convocado para uma missão especial!
-      </p>
-
-      <div class="idade">
-        <strong>7</strong>
-        <span>ANOS</span>
-      </div>
-
-      <p class="frase">
-        Prepare seu <span class="destaque">chakra</span>,
-        reúna sua equipe e venha viver uma
-        aventura ninja inesquecível!
-      </p>
-
-      <!-- DATA -->
-      <div class="info">
-        <div class="icone">📅</div>
-        <div>
-          <small>Data</small>
-          <strong>02 de outubro de 2026</strong>
-        </div>
-      </div>
-
-      <!-- HORÁRIO -->
-      <div class="info">
-        <div class="icone">⏰</div>
-        <div>
-          <small>Horário</small>
-          <strong>16h</strong>
-        </div>
-      </div>
-
-      <!-- LOCAL -->
-      <div class="info">
-        <div class="icone">📍</div>
-        <div>
-          <small>Local</small>
-          <strong>Escola Dom Bosco</strong>
-        </div>
-      </div>
-
-      <div class="botoes">
-
-        <button class="laranja" onclick="localizacao()">
-          📍 VER LOCALIZAÇÃO
-        </button>
-
-        <button class="escuro" onclick="agenda()">
-          📅 ADICIONAR À AGENDA
-        </button>
-
-      </div>
-
-      <!-- CONFIRMAÇÃO -->
-      <div class="area">
-
-        <h2>🍥 Aceita essa missão?</h2>
-
-        <p>
-          Confirme sua presença pelo WhatsApp.
-        </p>
-
-        <input
-          id="nome"
-          type="text"
-          placeholder="Digite seu nome"
-          maxlength="50"
-        >
-
-        <div id="erroNome" class="erro">
-          ⚠️ Digite seu nome.
-        </div>
-
-        <select id="presenca">
-          <option value="">Você vai participar?</option>
-          <option value="Sim, vou participar! 🎉">
-            Sim, vou participar! 🎉
-          </option>
-          <option value="Não poderei participar.">
-            Não poderei participar.
-          </option>
-        </select>
-
-        <div id="erroPresenca" class="erro">
-          ⚠️ Selecione uma opção.
-        </div>
-
-        <button class="laranja" onclick="confirmar()">
-          🥷 CONFIRMAR PELO WHATSAPP
-        </button>
-
-        <button class="verde" onclick="compartilhar()">
-          📲 COMPARTILHAR CONVITE
-        </button>
-
-        <div id="msg"></div>
-
-      </div>
-
-      <div class="rodape">
-        Prepare seu chakra. A missão começa em breve! 🔥
-        <br>
-        João Gabriel • 7 anos
-      </div>
-
+<div class="convite-container">
+    <div class="header-banner">
+        Você está convidado para uma missão muito especial!
     </div>
-  </section>
+    
+    <div class="conteudo">
+        <p style="color: #ff6700; font-weight: bold; margin: 0; text-transform: uppercase; letter-spacing: 2px;">Aniversário do</p>
+        <h1>João Gabriel</h1>
+        <div class="idade">7 ANOS</div>
+        
+        <p class="mensagem">
+            Será uma grande alegria contar com a sua presença nessa comemoração ninja! Prepare seu jutsu e venha comemorar comigo!
+        </p>
+        
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="info-label">📅 Data</span>
+                <span class="info-val">02/10/2026</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">🕒 Horário</span>
+                <span class="info-val">16:00h</span>
+            </div>
+            <div class="info-item info-full">
+                <span class="info-label">📍 Local</span>
+                <span class="info-val">Escola Dom Bosco</span>
+            </div>
+        </div>
+
+        <!-- BOTÕES INTERATIVOS CLICÁVEIS -->
+        <a href="https://whatsapp.com!" target="_blank" class="btn btn-wpp">
+            <span class="icon">💬</span> Confirmar Presença
+        </a>
+
+        <a href="https://google.com" target="_blank" class="btn">
+            <span class="icon">📍</span> Ver Localização no Mapa
+        </a>
+        
+        <div class="footer-tag">⚡ Conto com você! ⚡</div>
+    </div>
 </div>
 
-<button class="music" id="musicBtn" onclick="musica()">
-  🎵 Ativar música
-</button>
-
-<script>
-
-/* =========================
-   SHURIKENS E PARTÍCULAS
-========================= */
-
-const efeitos = document.getElementById("efeitos");
-
-for(let i=0;i<9;i++){
-
-  const s=document.createElement("div");
-
-  s.className="shuriken";
-  s.innerText="✦";
-
-  s.style.left=(-10+Math.random()*100)+"vw";
-  s.style.top=(-20+Math.random()*50)+"vh";
-  s.style.animationDuration=(4+Math.random()*5)+"s";
-  s.style.animationDelay=(-Math.random()*7)+"s";
-
-  efeitos.appendChild(s);
-}
-
-for(let i=0;i<35;i++){
-
-  const p=document.createElement("div");
-
-  p.className="particula";
-
-  p.style.left=Math.random()*100+"vw";
-  p.style.animationDuration=(5+Math.random()*8)+"s";
-  p.style.animationDelay=(-Math.random()*10)+"s";
-  p.style.opacity=.2+Math.random()*.6;
-
-  efeitos.appendChild(p);
-}
-
-
-/* =========================
-   LOCALIZAÇÃO
-========================= */
-
-function localizacao(){
-
-  const endereco =
-    "Escola Dom Bosco, Av. Fernando Vilela, 152, Martins, Uberlândia - MG, 38400-458";
-
-  const url =
-    "https://www.google.com/maps/search/?api=1&query=" +
-    encodeURIComponent(endereco);
-
-  window.open(url,"_blank");
-}
-
-
-/* =========================
-   AGENDA
-========================= */
-
-function agenda(){
-
-  const inicio="20261002T160000";
-  const fim="20261002T190000";
-
-  const titulo="🎂 Aniversário do João Gabriel";
-
-  const local=
-    "Escola Dom Bosco, Av. Fernando Vilela, 152, Martins, Uberlândia - MG, 38400-458";
-
-  const descricao=
-    "Aniversário de 7 anos do João Gabriel.";
-
-  const url=
-    "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-    "&text="+encodeURIComponent(titulo) +
-    "&dates="+inicio+"/"+fim +
-    "&details="+encodeURIComponent(descricao) +
-    "&location="+encodeURIComponent(local);
-
-  window.open(url,"_blank");
-}
-
-
-/* =========================
-   CONFIRMAÇÃO
-========================= */
-
-function confirmar(){
-
-  const nome=
-    document.getElementById("nome").value.trim();
-
-  const presenca=
-    document.getElementById("presenca").value;
-
-  const erroNome=
-    document.getElementById("erroNome");
-
-  const erroPresenca=
-    document.getElementById("erroPresenca");
-
-  erroNome.style.display="none";
-  erroPresenca.style.display="none";
-
-  let valido=true;
-
-  if(nome===""){
-    erroNome.style.display="block";
-    valido=false;
-  }
-
-  if(presenca===""){
-    erroPresenca.style.display="block";
-    valido=false;
-  }
-
-  if(!valido){
-
-    mensagem(
-      "⚠️ Preencha os campos para continuar.",
-      "#ff7070"
-    );
-
-    return;
-  }
-
-  const texto=
-    "🍥 CONFIRMAÇÃO DE PRESENÇA 🍥\n\n"+
-    "Olá! Sou "+nome+".\n\n"+
-    presenca+"\n\n"+
-    "🎂 Aniversário do João Gabriel\n"+
-    "🥷 7 anos\n"+
-    "📅 02/10/2026\n"+
-    "⏰ 16h\n"+
-    "📍 Escola Dom Bosco\n"+
-    "Av. Fernando Vilela, 152 - Martins\n"+
-    "Uberlândia - MG";
-
-  const url=
-    "https://wa.me/?text="+
-    encodeURIComponent(texto);
-
-  mensagem("✅ Abrindo o WhatsApp...","#48e58b");
-
-  setTimeout(()=>{
-    window.open(url,"_blank");
-  },500);
-}
-
-
-/* =========================
-   COMPARTILHAR
-========================= */
-
-function compartilhar(){
-
-  const url=window.location.href;
-
-  const texto=
-    "🥷 VOCÊ FOI CONVOCADO! 🥷\n\n"+
-    "🎂 Aniversário do João Gabriel\n"+
-    "🎉 7 anos\n\n"+
-    "📅 02/10/2026\n"+
-    "⏰ 16h\n"+
-    "📍 Escola Dom Bosco\n\n"+
-    "Prepare seu chakra para essa missão ninja! 🔥\n\n"+
-    "👉 Confira o convite:\n"+
-    url;
-
-  const whatsapp=
-    "https://wa.me/?text="+
-    encodeURIComponent(texto);
-
-  window.open(whatsapp,"_blank");
-}
-
-
-/* =========================
-   MENSAGEM
-========================= */
-
-function mensagem(texto,cor){
-
-  const msg=document.getElementById("msg");
-
-  msg.innerText=texto;
-  msg.style.color=cor;
-
-}
-
-
-/* =========================
-   TRILHA NINJA ORIGINAL
-   GERADA PELO NAVEGADOR
-========================= */
-
-let audio=null;
-let osciladores=[];
-let tocando=false;
-
-function musica(){
-
-  if(!audio){
-
-    audio=
-      new (window.AudioContext ||
-      window.webkitAudioContext)();
-
-    tocarTrilha();
-
-  }else{
-
-    if(tocando){
-
-      osciladores.forEach(o=>{
-        try{o.stop()}catch(e){}
-      });
-
-      osciladores=[];
-      tocando=false;
-
-      document.getElementById("musicBtn").innerText=
-        "🎵 Ativar música";
-
-    }else{
-
-      tocarTrilha();
-
-    }
-  }
-}
-
-
-function tocarTrilha(){
-
-  tocando=true;
-
-  document.getElementById("musicBtn").innerText=
-    "🔇 Desativar música";
-
-  const notas=[
-    220,261.63,329.63,293.66,
-    220,261.63,392,329.63
-  ];
-
-  let tempo=0;
-
-  notas.forEach((freq,i)=>{
-
-    const osc=audio.createOscillator();
-    const ganho=audio.createGain();
-
-    osc.type="triangle";
-    osc.frequency.value=freq;
-
-    ganho.gain.setValueAtTime(
-      0,
-      audio.currentTime+tempo
-    );
-
-    ganho.gain.linearRampToValueAtTime(
-      .055,
-      audio.currentTime+tempo+.05
-    );
-
-    ganho.gain.exponentialRampToValueAtTime(
-      .001,
-      audio.currentTime+tempo+.55
-    );
-
-    osc.connect(ganho);
-    ganho.connect(audio.destination);
-
-    osc.start(audio.currentTime+tempo);
-    osc.stop(audio.currentTime+tempo+.6);
-
-    osciladores.push(osc);
-
-    tempo+=.48;
-  });
-
-  setTimeout(()=>{
-
-    if(tocando){
-
-      osciladores=[];
-
-      tocarTrilha();
-
-    }
-
-  },tempo*1000);
-
-}
-
-</script>
+</body>
+</html>
+Use o código com cuidado.
+💡 Como utilizar e personalizar:
+Confirmação de Presença: No link do primeiro botão (href="https://whatsapp.com...), substitua a palavra SEUNUMERO pelo número do seu WhatsApp com o código do país e DDD (exemplo: 5534999999999).
+Localização Exata: No segundo botão, o link já está configurado para buscar pela Escola Dom Bosco. Se quiser uma unidade ou endereço ainda mais específico, basta mudar o texto após query= para o endereço completo da escola.
+Gostaria que eu faça alguma alteração no design do convite, como mudar as cores principais, adicionar um campo para sugestão de presentes ou alterar a mensagem de texto?
+
+
+
+
+Sem problemas! Eu te ajudo a localizar exatamente onde colocar o número.
+Se você olhar no bloco de código acima, mais ou menos na linha 115, você vai encontrar este trecho:
+html
+<a href="https://whatsapp.com!" target="_blank" class="btn btn-wpp">
+Use o código com cuidado.
+Você deve apagar a palavra SEUNUMERO e colocar o seu número de telefone completo, tudo junto, com o código do país (Brasil é 55) e o seu DDD.
+Por exemplo: Se o seu número for de São Paulo (DDD 11) e for 98888-7777, a linha modificada deve ficar exatamente assim:
+html
+<a href="https://whatsapp.com!" target="_blank" class="btn btn-wpp">
+Use o código com cuidado.
+Se preferir, pode me enviar o seu número de WhatsApp com o DDD que eu mesmo altero no código e te mando a versão prontinha para salvar. O que acha?
+
+
+
+
+Prontinho! Já inseri o seu número corretamente no link do botão de confirmação.
+Aqui está o código completo atualizado e pronto para uso. Basta copiar todo o texto abaixo e salvar como um arquivo .html (por exemplo: convite.html) para enviar aos seus convidados:
+html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Virtual do João Gabriel</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .convite-container {
+            width: 100%;
+            max-width: 450px;
+            background: linear-gradient(135deg, #1e1e24 0%, #0f0f12 100%);
+            border: 3px solid #ff6700;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+        .header-banner {
+            background: #ff6700;
+            padding: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #000;
+            border-bottom: 4px solid #fff;
+        }
+        .conteudo {
+            padding: 25px 20px;
+        }
+        h1 {
+            color: #ff6700;
+            font-size: 2.2rem;
+            margin: 10px 0 5px 0;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px #000, -1px -1px 0px #fff;
+        }
+        .idade {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            background: #333;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 1px solid #ff6700;
+            margin-bottom: 20px;
+        }
+        .mensagem {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px dashed #ff6700;
+        }
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .info-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #ff6700;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .info-val {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .info-full {
+            grid-column: span 2;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 10px;
+            margin-top: 5px;
+        }
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ff6700;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 14px;
+            border-radius: 30px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 103, 0, 0.4);
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        .btn-wpp {
+            background: #25d366;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+        .icon {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        .footer-tag {
+            font-size: 1.1rem;
+            color: #ff6700;
+            font-style: italic;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="convite-container">
+    <div class="header-banner">
+        Você está convidado para uma missão muito especial!
+    </div>
+    
+    <div class="conteudo">
+        <p style="color: #ff6700; font-weight: bold; margin: 0; text-transform: uppercase; letter-spacing: 2px;">Aniversário do</p>
+        <h1>João Gabriel</h1>
+        <div class="idade">7 ANOS</div>
+        
+        <p class="mensagem">
+            Será uma grande alegria contar com a sua presença nessa comemoração ninja! Prepare seu jutsu e venha comemorar comigo!
+        </p>
+        
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="info-label">📅 Data</span>
+                <span class="info-val">02/10/2026</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">🕒 Horário</span>
+                <span class="info-val">16:00h</span>
+            </div>
+            <div class="info-item info-full">
+                <span class="info-label">📍 Local</span>
+                <span class="info-val">Escola Dom Bosco</span>
+            </div>
+        </div>
+
+        <!-- BOTÕES INTERATIVOS CLICÁVEIS -->
+        <a href="https://whatsapp.com!" target="_blank" class="btn btn-wpp">
+            <span class="icon">💬</span> Confirmar Presença
+        </a>
+
+        <a href="https://google.com" target="_blank" class="btn">
+            <span class="icon">📍</span> Ver Localização no Mapa
+        </a>
+        
+        <div class="footer-tag">⚡ Conto com você! ⚡</div>
+    </div>
+</div>
 
 </body>
 </html>

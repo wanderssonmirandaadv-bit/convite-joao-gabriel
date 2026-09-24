@@ -356,4 +356,484 @@ input:focus,select:focus{
   color:#ff7070;
   font-size:11px;
   text-align:left;
-  margin:-6px 0 
+  margin:-6px 0 8px;
+}
+
+#msg{
+  margin-top:12px;
+  font-size:12px;
+  font-weight:700;
+  min-height:18px;
+}
+
+.rodape{
+  margin-top:24px;
+  color:#777;
+  font-size:10px;
+  line-height:1.7;
+}
+
+/* MÚSICA */
+.music{
+  position:fixed;
+  z-index:20;
+  right:15px;
+  bottom:15px;
+  width:auto;
+  padding:12px 16px;
+  border-radius:50px;
+  background:#ff6500;
+  box-shadow:0 5px 20px rgba(0,0,0,.5);
+  font-size:12px;
+}
+
+/* RESPONSIVO */
+@media(max-width:380px){
+  h1{font-size:47px}
+  .conteudo{padding:25px 17px}
+  .ninja{transform:scale(.9)}
+}
+</style>
+</head>
+
+<body>
+
+<div id="efeitos"></div>
+
+<div class="tela">
+  <section class="convite">
+
+    <div class="luz"></div>
+
+    <div class="conteudo">
+
+      <div class="missao">
+        ⚡ MISSÃO NINJA ⚡
+      </div>
+
+      <!-- PERSONAGEM NINJA ORIGINAL -->
+      <div class="ninja">
+        <div class="cabelo"></div>
+        <div class="cabeca"></div>
+        <div class="faixa"></div>
+        <div class="simbolo">✦</div>
+        <div class="olho esq"></div>
+        <div class="olho dir"></div>
+        <div class="corpo"></div>
+      </div>
+
+      <h1>JOÃO GABRIEL</h1>
+
+      <p class="sub">
+        Você foi convocado para uma missão especial!
+      </p>
+
+      <div class="idade">
+        <strong>7</strong>
+        <span>ANOS</span>
+      </div>
+
+      <p class="frase">
+        Prepare seu <span class="destaque">chakra</span>,
+        reúna sua equipe e venha viver uma
+        aventura ninja inesquecível!
+      </p>
+
+      <!-- DATA -->
+      <div class="info">
+        <div class="icone">📅</div>
+        <div>
+          <small>Data</small>
+          <strong>02 de outubro de 2026</strong>
+        </div>
+      </div>
+
+      <!-- HORÁRIO -->
+      <div class="info">
+        <div class="icone">⏰</div>
+        <div>
+          <small>Horário</small>
+          <strong>16h</strong>
+        </div>
+      </div>
+
+      <!-- LOCAL -->
+      <div class="info">
+        <div class="icone">📍</div>
+        <div>
+          <small>Local</small>
+          <strong>Escola Dom Bosco</strong>
+        </div>
+      </div>
+
+      <div class="botoes">
+
+        <button class="laranja" onclick="localizacao()">
+          📍 VER LOCALIZAÇÃO
+        </button>
+
+        <button class="escuro" onclick="agenda()">
+          📅 ADICIONAR À AGENDA
+        </button>
+
+      </div>
+
+      <!-- CONFIRMAÇÃO -->
+      <div class="area">
+
+        <h2>🍥 Aceita essa missão?</h2>
+
+        <p>
+          Confirme sua presença pelo WhatsApp.
+        </p>
+
+        <input
+          id="nome"
+          type="text"
+          placeholder="Digite seu nome"
+          maxlength="50"
+        >
+
+        <div id="erroNome" class="erro">
+          ⚠️ Digite seu nome.
+        </div>
+
+        <select id="presenca">
+          <option value="">Você vai participar?</option>
+          <option value="Sim, vou participar! 🎉">
+            Sim, vou participar! 🎉
+          </option>
+          <option value="Não poderei participar.">
+            Não poderei participar.
+          </option>
+        </select>
+
+        <div id="erroPresenca" class="erro">
+          ⚠️ Selecione uma opção.
+        </div>
+
+        <button class="laranja" onclick="confirmar()">
+          🥷 CONFIRMAR PELO WHATSAPP
+        </button>
+
+        <button class="verde" onclick="compartilhar()">
+          📲 COMPARTILHAR CONVITE
+        </button>
+
+        <div id="msg"></div>
+
+      </div>
+
+      <div class="rodape">
+        Prepare seu chakra. A missão começa em breve! 🔥
+        <br>
+        João Gabriel • 7 anos
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<button class="music" id="musicBtn" onclick="musica()">
+  🎵 Ativar música
+</button>
+
+<script>
+
+/* =========================
+   SHURIKENS E PARTÍCULAS
+========================= */
+
+const efeitos = document.getElementById("efeitos");
+
+for(let i=0;i<9;i++){
+
+  const s=document.createElement("div");
+
+  s.className="shuriken";
+  s.innerText="✦";
+
+  s.style.left=(-10+Math.random()*100)+"vw";
+  s.style.top=(-20+Math.random()*50)+"vh";
+  s.style.animationDuration=(4+Math.random()*5)+"s";
+  s.style.animationDelay=(-Math.random()*7)+"s";
+
+  efeitos.appendChild(s);
+}
+
+for(let i=0;i<35;i++){
+
+  const p=document.createElement("div");
+
+  p.className="particula";
+
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=(5+Math.random()*8)+"s";
+  p.style.animationDelay=(-Math.random()*10)+"s";
+  p.style.opacity=.2+Math.random()*.6;
+
+  efeitos.appendChild(p);
+}
+
+
+/* =========================
+   LOCALIZAÇÃO
+========================= */
+
+function localizacao(){
+
+  const endereco =
+    "Escola Dom Bosco, Av. Fernando Vilela, 152, Martins, Uberlândia - MG, 38400-458";
+
+  const url =
+    "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent(endereco);
+
+  window.open(url,"_blank");
+}
+
+
+/* =========================
+   AGENDA
+========================= */
+
+function agenda(){
+
+  const inicio="20261002T160000";
+  const fim="20261002T190000";
+
+  const titulo="🎂 Aniversário do João Gabriel";
+
+  const local=
+    "Escola Dom Bosco, Av. Fernando Vilela, 152, Martins, Uberlândia - MG, 38400-458";
+
+  const descricao=
+    "Aniversário de 7 anos do João Gabriel.";
+
+  const url=
+    "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    "&text="+encodeURIComponent(titulo) +
+    "&dates="+inicio+"/"+fim +
+    "&details="+encodeURIComponent(descricao) +
+    "&location="+encodeURIComponent(local);
+
+  window.open(url,"_blank");
+}
+
+
+/* =========================
+   CONFIRMAÇÃO
+========================= */
+
+function confirmar(){
+
+  const nome=
+    document.getElementById("nome").value.trim();
+
+  const presenca=
+    document.getElementById("presenca").value;
+
+  const erroNome=
+    document.getElementById("erroNome");
+
+  const erroPresenca=
+    document.getElementById("erroPresenca");
+
+  erroNome.style.display="none";
+  erroPresenca.style.display="none";
+
+  let valido=true;
+
+  if(nome===""){
+    erroNome.style.display="block";
+    valido=false;
+  }
+
+  if(presenca===""){
+    erroPresenca.style.display="block";
+    valido=false;
+  }
+
+  if(!valido){
+
+    mensagem(
+      "⚠️ Preencha os campos para continuar.",
+      "#ff7070"
+    );
+
+    return;
+  }
+
+  const texto=
+    "🍥 CONFIRMAÇÃO DE PRESENÇA 🍥\n\n"+
+    "Olá! Sou "+nome+".\n\n"+
+    presenca+"\n\n"+
+    "🎂 Aniversário do João Gabriel\n"+
+    "🥷 7 anos\n"+
+    "📅 02/10/2026\n"+
+    "⏰ 16h\n"+
+    "📍 Escola Dom Bosco\n"+
+    "Av. Fernando Vilela, 152 - Martins\n"+
+    "Uberlândia - MG";
+
+  const url=
+    "https://wa.me/?text="+
+    encodeURIComponent(texto);
+
+  mensagem("✅ Abrindo o WhatsApp...","#48e58b");
+
+  setTimeout(()=>{
+    window.open(url,"_blank");
+  },500);
+}
+
+
+/* =========================
+   COMPARTILHAR
+========================= */
+
+function compartilhar(){
+
+  const url=window.location.href;
+
+  const texto=
+    "🥷 VOCÊ FOI CONVOCADO! 🥷\n\n"+
+    "🎂 Aniversário do João Gabriel\n"+
+    "🎉 7 anos\n\n"+
+    "📅 02/10/2026\n"+
+    "⏰ 16h\n"+
+    "📍 Escola Dom Bosco\n\n"+
+    "Prepare seu chakra para essa missão ninja! 🔥\n\n"+
+    "👉 Confira o convite:\n"+
+    url;
+
+  const whatsapp=
+    "https://wa.me/?text="+
+    encodeURIComponent(texto);
+
+  window.open(whatsapp,"_blank");
+}
+
+
+/* =========================
+   MENSAGEM
+========================= */
+
+function mensagem(texto,cor){
+
+  const msg=document.getElementById("msg");
+
+  msg.innerText=texto;
+  msg.style.color=cor;
+
+}
+
+
+/* =========================
+   TRILHA NINJA ORIGINAL
+   GERADA PELO NAVEGADOR
+========================= */
+
+let audio=null;
+let osciladores=[];
+let tocando=false;
+
+function musica(){
+
+  if(!audio){
+
+    audio=
+      new (window.AudioContext ||
+      window.webkitAudioContext)();
+
+    tocarTrilha();
+
+  }else{
+
+    if(tocando){
+
+      osciladores.forEach(o=>{
+        try{o.stop()}catch(e){}
+      });
+
+      osciladores=[];
+      tocando=false;
+
+      document.getElementById("musicBtn").innerText=
+        "🎵 Ativar música";
+
+    }else{
+
+      tocarTrilha();
+
+    }
+  }
+}
+
+
+function tocarTrilha(){
+
+  tocando=true;
+
+  document.getElementById("musicBtn").innerText=
+    "🔇 Desativar música";
+
+  const notas=[
+    220,261.63,329.63,293.66,
+    220,261.63,392,329.63
+  ];
+
+  let tempo=0;
+
+  notas.forEach((freq,i)=>{
+
+    const osc=audio.createOscillator();
+    const ganho=audio.createGain();
+
+    osc.type="triangle";
+    osc.frequency.value=freq;
+
+    ganho.gain.setValueAtTime(
+      0,
+      audio.currentTime+tempo
+    );
+
+    ganho.gain.linearRampToValueAtTime(
+      .055,
+      audio.currentTime+tempo+.05
+    );
+
+    ganho.gain.exponentialRampToValueAtTime(
+      .001,
+      audio.currentTime+tempo+.55
+    );
+
+    osc.connect(ganho);
+    ganho.connect(audio.destination);
+
+    osc.start(audio.currentTime+tempo);
+    osc.stop(audio.currentTime+tempo+.6);
+
+    osciladores.push(osc);
+
+    tempo+=.48;
+  });
+
+  setTimeout(()=>{
+
+    if(tocando){
+
+      osciladores=[];
+
+      tocarTrilha();
+
+    }
+
+  },tempo*1000);
+
+}
+
+</script>
+
+</body>
+</html>

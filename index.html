@@ -3,236 +3,508 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aniversário do João Gabriel</title>
+
+  <meta name="theme-color" content="#ff6a00">
+
+  <title>Missão Ninja — João Gabriel</title>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;500;600;700;800&display=swap');
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       min-height: 100vh;
-      background: linear-gradient(135deg, #111827, #f97316);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
+      color: #fff;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,110,0,.22), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(255,180,0,.12), transparent 25%),
+        linear-gradient(135deg, #070707 0%, #151515 45%, #241008 100%);
     }
 
-    .convite {
+    /* FUNDO ANIMADO */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .12;
+      background-image:
+        linear-gradient(45deg, #fff 1px, transparent 1px),
+        linear-gradient(-45deg, #fff 1px, transparent 1px);
+      background-size: 45px 45px;
+      animation: fundo 20s linear infinite;
+    }
+
+    @keyframes fundo {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 90px 90px;
+      }
+    }
+
+    .container {
+      position: relative;
       width: 100%;
-      max-width: 430px;
-      background: rgba(0, 0, 0, 0.88);
-      border-radius: 25px;
+      max-width: 480px;
+      margin: auto;
+      padding: 18px;
+    }
+
+    /* CARTÃO */
+
+    .convite {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      border: 2px solid rgba(255,120,0,.7);
+      background:
+        linear-gradient(
+          180deg,
+          rgba(20,20,20,.97),
+          rgba(8,8,8,.98)
+        );
+      box-shadow:
+        0 0 30px rgba(255,90,0,.25),
+        0 25px 70px rgba(0,0,0,.65);
+    }
+
+    .convite::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: #ff6a00;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .18;
+      top: -100px;
+      right: -100px;
+    }
+
+    .conteudo {
+      position: relative;
+      z-index: 2;
       padding: 30px 22px;
       text-align: center;
-      box-shadow: 0 10px 35px rgba(0,0,0,.5);
-      border: 2px solid #f97316;
+    }
+
+    /* TOPO */
+
+    .missao {
+      display: inline-block;
+      padding: 7px 16px;
+      border: 1px solid #ff7b00;
+      border-radius: 50px;
+      color: #ff9b42;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      50% {
+        box-shadow: 0 0 20px rgba(255,105,0,.35);
+      }
     }
 
     .simbolo {
-      font-size: 60px;
+      font-size: 72px;
+      line-height: 1;
       margin-bottom: 10px;
+      animation: flutuar 3s ease-in-out infinite;
+    }
+
+    @keyframes flutuar {
+      0%,100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
     }
 
     h1 {
-      color: #ff8c00;
-      font-size: 34px;
-      margin-bottom: 5px;
+      font-family: 'Bangers', cursive;
+      font-size: 55px;
+      line-height: .95;
+      letter-spacing: 2px;
+      color: #ff7410;
+      text-shadow:
+        3px 3px 0 #8c2500,
+        0 0 20px rgba(255,100,0,.4);
     }
 
-    h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
+    .subtitulo {
+      margin-top: 10px;
+      color: #ddd;
+      font-size: 15px;
     }
+
+    /* IDADE */
 
     .idade {
-      display: inline-block;
-      background: #f97316;
-      color: white;
-      padding: 10px 22px;
-      border-radius: 30px;
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 22px auto;
+      width: 115px;
+      height: 115px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, #ff9a00, #f45100 60%, #8c1d00);
+      border: 5px solid #ffbd54;
+      box-shadow:
+        0 0 0 5px rgba(255,110,0,.12),
+        0 0 30px rgba(255,100,0,.45);
+      animation: destaque 2.5s ease-in-out infinite;
+    }
+
+    @keyframes destaque {
+      50% {
+        transform: scale(1.04);
+      }
+    }
+
+    .idade span {
+      font-family: 'Bangers', cursive;
+      font-size: 55px;
+      text-shadow: 3px 3px #7a1b00;
+    }
+
+    .anos {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    /* FRASE */
+
+    .frase {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #eee;
+      margin: 5px 0 25px;
+    }
+
+    .destaque {
+      color: #ff8a22;
+      font-weight: 800;
+    }
+
+    /* INFORMAÇÕES */
+
+    .informacoes {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 22px;
     }
 
     .info {
-      background: rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      text-align: left;
+      gap: 14px;
+      padding: 14px;
       border-radius: 15px;
-      padding: 18px;
-      margin: 15px 0;
-      line-height: 1.8;
-      font-size: 18px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.08);
+      transition: .3s;
     }
 
-    .titulo {
-      color: #ffb347;
-      font-weight: bold;
+    .info:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,120,0,.5);
+    }
+
+    .icone {
+      min-width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: #f45b08;
+      font-size: 21px;
+    }
+
+    .info small {
+      display: block;
+      color: #999;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .info strong {
+      display: block;
+      margin-top: 2px;
+      font-size: 15px;
+    }
+
+    /* DIVISOR */
+
+    .divisor {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 25px 0;
+      color: #ff7a15;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .divisor::before,
+    .divisor::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #ff6a00,
+        transparent
+      );
+    }
+
+    /* FORMULÁRIO */
+
+    .formulario {
+      text-align: left;
+    }
+
+    .formulario h2 {
+      text-align: center;
+      font-size: 21px;
       margin-bottom: 5px;
     }
 
-    input {
+    .formulario p {
+      text-align: center;
+      color: #aaa;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #ddd;
+    }
+
+    input,
+    select {
       width: 100%;
       padding: 14px;
-      margin-top: 8px;
-      border-radius: 10px;
-      border: none;
-      font-size: 16px;
+      border-radius: 12px;
+      border: 1px solid #444;
+      background: #151515;
+      color: #fff;
       outline: none;
+      font-family: inherit;
+      margin-bottom: 14px;
     }
+
+    input:focus,
+    select:focus {
+      border-color: #ff6a00;
+      box-shadow: 0 0 0 3px rgba(255,106,0,.1);
+    }
+
+    .erro {
+      display: none;
+      color: #ff6b6b;
+      font-size: 11px;
+      margin-top: -8px;
+      margin-bottom: 10px;
+    }
+
+    /* BOTÕES */
 
     button {
       width: 100%;
-      border: none;
+      border: 0;
       padding: 15px;
-      border-radius: 12px;
-      margin-top: 12px;
-      font-size: 17px;
-      font-weight: bold;
+      border-radius: 13px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 800;
       cursor: pointer;
-    }
-
-    .whatsapp {
-      background: #25D366;
-      color: white;
-    }
-
-    .confirmar {
-      background: #f97316;
-      color: white;
+      transition: .25s;
     }
 
     button:active {
-      transform: scale(.98);
+      transform: scale(.97);
     }
+
+    .confirmar {
+      color: white;
+      background: linear-gradient(135deg, #ff7b00, #e53900);
+      box-shadow: 0 8px 25px rgba(255,75,0,.25);
+    }
+
+    .confirmar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(255,75,0,.35);
+    }
+
+    .whatsapp {
+      margin-top: 10px;
+      background: #20c96b;
+      color: white;
+    }
+
+    .whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(32,201,107,.25);
+    }
+
+    /* MENSAGEM */
 
     #mensagem {
-      margin-top: 15px;
-      font-weight: bold;
-      min-height: 25px;
+      display: none;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
     }
 
+    .sucesso {
+      display: block !important;
+      color: #8dffbd;
+      background: rgba(32,201,107,.12);
+      border: 1px solid rgba(32,201,107,.3);
+    }
+
+    .falha {
+      display: block !important;
+      color: #ff9292;
+      background: rgba(255,60,60,.1);
+      border: 1px solid rgba(255,60,60,.25);
+    }
+
+    /* RODAPÉ */
+
     .rodape {
-      margin-top: 20px;
-      font-size: 13px;
-      opacity: .7;
+      text-align: center;
+      margin-top: 25px;
+      color: #777;
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 380px) {
+
+      .container {
+        padding: 10px;
+      }
+
+      .conteudo {
+        padding: 25px 17px;
+      }
+
+      h1 {
+        font-size: 46px;
+      }
+
+      .simbolo {
+        font-size: 60px;
+      }
+
+      .frase {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="convite">
+  <main class="container">
 
-    <div class="simbolo">🍥</div>
+    <section class="convite">
 
-    <h1>Você foi convocado!</h1>
+      <div class="conteudo">
 
-    <h2>Aniversário do João Gabriel</h2>
+        <div class="missao">
+          ⚡ Convocação Ninja ⚡
+        </div>
 
-    <div class="idade">
-      🎂 7 ANOS 🎂
-    </div>
+        <div class="simbolo">
+          🍥
+        </div>
 
-    <div class="info">
-      <div class="titulo">📅 DATA</div>
-      02 de outubro de 2026
+        <h1>
+          JOÃO GABRIEL
+        </h1>
 
-      <br><br>
+        <p class="subtitulo">
+          Uma missão especial está começando!
+        </p>
 
-      <div class="titulo">⏰ HORÁRIO</div>
-      16h
+        <div class="idade">
+          <div>
+            <span>7</span>
+            <div class="anos">ANOS</div>
+          </div>
+        </div>
 
-      <br><br>
+        <p class="frase">
+          Prepare seu <span class="destaque">chakra</span>,
+          vista sua melhor energia ninja e venha comemorar
+          essa aventura com a gente!
+        </p>
 
-      <div class="titulo">📍 LOCAL</div>
-      Escola Dom Bosco
-    </div>
+        <div class="informacoes">
 
-    <div class="info">
-      <div class="titulo">🍥 Confirme sua presença</div>
+          <div class="info">
+            <div class="icone">📅</div>
+            <div>
+              <small>Data</small>
+              <strong>02 de outubro de 2026</strong>
+            </div>
+          </div>
 
-      <input
-        type="text"
-        id="nome"
-        placeholder="Digite seu nome"
-        maxlength="50"
-      >
+          <div class="info">
+            <div class="icone">⏰</div>
+            <div>
+              <small>Horário</small>
+              <strong>16h</strong>
+            </div>
+          </div>
 
-      <button class="confirmar" onclick="confirmarPresenca()">
-        ✅ Confirmar presença
-      </button>
+          <div class="info">
+            <div class="icone">📍</div>
+            <div>
+              <small>Local</small>
+              <strong>Escola Dom Bosco</strong>
+            </div>
+          </div>
 
-      <button class="whatsapp" onclick="compartilharWhatsApp()">
-        📱 Compartilhar no WhatsApp
-      </button>
+        </div>
 
-      <div id="mensagem"></div>
-    </div>
-
-    <div class="rodape">
-      Prepare-se para uma missão ninja inesquecível! 🥷🔥
-    </div>
-
-  </div>
-
-  <script>
-
-    function confirmarPresenca() {
-
-      const nome = document.getElementById("nome").value.trim();
-      const mensagem = document.getElementById("mensagem");
-
-      if (nome === "") {
-        mensagem.style.color = "#ff6b6b";
-        mensagem.innerText = "⚠️ Digite seu nome para confirmar.";
-        return;
-      }
-
-      const texto =
-        "🍥 CONFIRMAÇÃO DE PRESENÇA 🍥\n\n" +
-        "Olá! Eu sou " + nome + " e confirmo minha presença no aniversário do João Gabriel! 🎂\n\n" +
-        "📅 02/10/2026\n" +
-        "⏰ 16h\n" +
-        "📍 Escola Dom Bosco";
-
-      const url =
-        "https://wa.me/?text=" +
-        encodeURIComponent(texto);
-
-      window.open(url, "_blank");
-
-      mensagem.style.color = "#25D366";
-      mensagem.innerText = "✅ Abrindo o WhatsApp...";
-    }
-
-
-    function compartilharWhatsApp() {
-
-      const urlConvite = window.location.href;
-
-      const texto =
-        "🍥 Você está convidado para o aniversário do João Gabriel! 🎂\n\n" +
-        "Ele vai completar 7 anos! 🥳\n\n" +
-        "📅 02/10/2026\n" +
-        "⏰ 16h\n" +
-        "📍 Escola Dom Bosco\n\n" +
-        "Confira o convite completo aqui:\n" +
-        urlConvite;
-
-      const urlWhatsApp =
-        "https://wa.me/?text=" +
-        encodeURIComponent(texto);
-
-      window.open(urlWhatsApp, "_blank");
-    }
-
-  </script>
-
-</body>
-</html>
+        <

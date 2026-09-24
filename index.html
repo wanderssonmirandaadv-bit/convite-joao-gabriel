@@ -1,1 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aniversário do João Gabriel</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #111827, #f97316);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .convite {
+      width: 100%;
+      max-width: 430px;
+      background: rgba(0, 0, 0, 0.88);
+      border-radius: 25px;
+      padding: 30px 22px;
+      text-align: center;
+      box-shadow: 0 10px 35px rgba(0,0,0,.5);
+      border: 2px solid #f97316;
+    }
+
+    .simbolo {
+      font-size: 60px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      color: #ff8c00;
+      font-size: 34px;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .idade {
+      display: inline-block;
+      background: #f97316;
+      color: white;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .info {
+      background: rgba(255,255,255,.08);
+      border-radius: 15px;
+      padding: 18px;
+      margin: 15px 0;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    .titulo {
+      color: #ffb347;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 12px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .whatsapp {
+      background: #25D366;
+      color: white;
+    }
+
+    .confirmar {
+      background: #f97316;
+      color: white;
+    }
+
+    button:active {
+      transform: scale(.98);
+    }
+
+    #mensagem {
+      margin-top: 15px;
+      font-weight: bold;
+      min-height: 25px;
+    }
+
+    .rodape {
+      margin-top: 20px;
+      font-size: 13px;
+      opacity: .7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="convite">
+
+    <div class="simbolo">🍥</div>
+
+    <h1>Você foi convocado!</h1>
+
+    <h2>Aniversário do João Gabriel</h2>
+
+    <div class="idade">
+      🎂 7 ANOS 🎂
+    </div>
+
+    <div class="info">
+      <div class="titulo">📅 DATA</div>
+      02 de outubro de 2026
+
+      <br><br>
+
+      <div class="titulo">⏰ HORÁRIO</div>
+      16h
+
+      <br><br>
+
+      <div class="titulo">📍 LOCAL</div>
+      Escola Dom Bosco
+    </div>
+
+    <div class="info">
+      <div class="titulo">🍥 Confirme sua presença</div>
+
+      <input
+        type="text"
+        id="nome"
+        placeholder="Digite seu nome"
+        maxlength="50"
+      >
+
+      <button class="confirmar" onclick="confirmarPresenca()">
+        ✅ Confirmar presença
+      </button>
+
+      <button class="whatsapp" onclick="compartilharWhatsApp()">
+        📱 Compartilhar no WhatsApp
+      </button>
+
+      <div id="mensagem"></div>
+    </div>
+
+    <div class="rodape">
+      Prepare-se para uma missão ninja inesquecível! 🥷🔥
+    </div>
+
+  </div>
+
+  <script>
+
+    function confirmarPresenca() {
+
+      const nome = document.getElementById("nome").value.trim();
+      const mensagem = document.getElementById("mensagem");
+
+      if (nome === "") {
+        mensagem.style.color = "#ff6b6b";
+        mensagem.innerText = "⚠️ Digite seu nome para confirmar.";
+        return;
+      }
+
+      const texto =
+        "🍥 CONFIRMAÇÃO DE PRESENÇA 🍥\n\n" +
+        "Olá! Eu sou " + nome + " e confirmo minha presença no aniversário do João Gabriel! 🎂\n\n" +
+        "📅 02/10/2026\n" +
+        "⏰ 16h\n" +
+        "📍 Escola Dom Bosco";
+
+      const url =
+        "https://wa.me/?text=" +
+        encodeURIComponent(texto);
+
+      window.open(url, "_blank");
+
+      mensagem.style.color = "#25D366";
+      mensagem.innerText = "✅ Abrindo o WhatsApp...";
+    }
+
+
+    function compartilharWhatsApp() {
+
+      const urlConvite = window.location.href;
+
+      const texto =
+        "🍥 Você está convidado para o aniversário do João Gabriel! 🎂\n\n" +
+        "Ele vai completar 7 anos! 🥳\n\n" +
+        "📅 02/10/2026\n" +
+        "⏰ 16h\n" +
+        "📍 Escola Dom Bosco\n\n" +
+        "Confira o convite completo aqui:\n" +
+        urlConvite;
+
+      const urlWhatsApp =
+        "https://wa.me/?text=" +
+        encodeURIComponent(texto);
+
+      window.open(urlWhatsApp, "_blank");
+    }
+
+  </script>
+
+</body>
+</html>

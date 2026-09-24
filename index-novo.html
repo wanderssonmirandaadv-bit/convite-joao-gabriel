@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>João Gabriel - 7 anos</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080808;
+    color: #ffffff;
+}
+
+.pagina {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.convite {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #120603;
+    box-shadow: 0 0 30px rgba(255, 80, 0, 0.35);
+}
+
+.imagem-principal {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.area-interativa {
+    padding: 22px 18px 28px;
+    text-align: center;
+    background: linear-gradient(#260b03, #080808);
+}
+
+.nome {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.idade {
+    margin: 6px 0 22px;
+    color: #ff9800;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.informacao {
+    margin: 12px 0;
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.endereco {
+    margin-top: 5px;
+    color: #dddddd;
+    font-size: 14px;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 52px;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao-agenda {
+    background: #37474f;
+}
+
+.botao-localizacao {
+    background: #e65100;
+}
+
+.botao-whatsapp {
+    background: #25d366;
+}
+
+.musica {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.titulo-musica {
+    margin-bottom: 12px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.player-musica {
+    width: 100%;
+}
+
+.rodape {
+    margin-top: 20px;
+    color: #aaaaaa;
+    font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="pagina">
+
+    <div class="convite">
+
+        <img
+            class="imagem-principal"
+            src="convite-naruto.png"
+            alt="Convite de aniversário do João Gabriel"
+        >
+
+        <div class="area-interativa">
+
+            <h1 class="nome">
+                João Gabriel
+            </h1>
+
+            <div class="idade">
+                🥷 7 anos 🎂
+            </div>
+
+            <div class="informacao">
+                📅 <strong>02 de outubro de 2026</strong>
+            </div>
+
+            <div class="informacao">
+                ⏰ <strong>16h</strong>
+            </div>
+
+            <div class="informacao">
+                🏫 <strong>Dom Bosco - Colégio Bilíngue</strong>
+            </div>
+
+            <div class="informacao">
+                📍
+                <div class="endereco">
+                    Av. Fernando Vilela, 152 - Martins<br>
+                    Uberlândia - MG<br>
+                    CEP 38400-458
+                </div>
+            </div>
+
+            <div class="botoes">
+
+                <button
+                    type="button"
+                    class="botao botao-agenda"
+                    onclick="adicionarAgenda()">
+                    🗓️ Adicionar à agenda
+                </button>
+
+                <a
+                    class="botao botao-localizacao"
+                    href="https://www.google.com/maps/search/?api=1&query=Av.+Fernando+Vilela,+152,+Martins,+Uberlândia,+MG"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    📍 Ver localização
+                </a>
+
+                <a
+                    class="botao botao-whatsapp"
+                    href="https://wa.me/?text=🎉%20Você%20está%20convidado%20para%20o%20aniversário%20do%20João%20Gabriel!%20🥷%0A%0A🎂%207%20anos%0A📅%2002/10/2026%20às%2016h%0A⏰%2016h%0A🏫%20Dom%20Bosco%20-%20Colégio%20Bilíngue%0A📍%20Av.%20Fernando%20Vilela,%20152%20-%20Martins,%20Uberlândia%20-%20MG"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    💬 Compartilhar no WhatsApp
+                </a>
+
+            </div>
+
+            <div class="musica">
+
+                <div class="titulo-musica">
+                    🎵 Blue Bird — Ikimonogakari
+                </div>
+
+                <audio
+                    class="player-musica"
+                    controls
+                    preload="metadata">
+
+                    <source
+                        src="musica-ninja.mp3"
+                        type="audio/mpeg">
+
+                    Seu navegador não suporta reprodução de áudio.
+                </audio>
+
+            </div>
+
+            <div class="rodape">
+                🥷 Prepare-se para uma aventura ninja! 🥷
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function adicionarAgenda() {
+
+    const titulo =
+        encodeURIComponent(
+            "Aniversário João Gabriel - 7 anos"
+        );
+
+    const local =
+        encodeURIComponent(
+            "Dom Bosco - Colégio Bilíngue, Av. Fernando Vilela, 152 - Martins, Uberlândia - MG"
+        );
+
+    const detalhes =
+        encodeURIComponent(
+            "Aniversário de 7 anos do João Gabriel."
+        );
+
+    const inicio = "20261002T160000";
+    const fim = "20261002T180000";
+
+    const enderecoGoogleAgenda =
+        "https://calendar.google.com/calendar/render" +
+        "?action=TEMPLATE" +
+        "&text=" + titulo +
+        "&dates=" + inicio + "/" + fim +
+        "&location=" + local +
+        "&details=" + detalhes;
+
+    window.open(
+        enderecoGoogleAgenda,
+        "_blank"
+    );
+}
+
+</script>
+
+</body>
+</html>

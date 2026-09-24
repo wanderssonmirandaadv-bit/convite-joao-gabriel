@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>João Gabriel - 7 anos</title>
 
   <style>
@@ -10,272 +11,379 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
       margin: 0;
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background: #050505;
-      color: white;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, #401000 0%, #150600 45%, #050505 100%);
+      color: #fff;
       overflow-x: hidden;
     }
 
-    .container {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stars {
+    /* ESTRELAS NINJA */
+    .estrelas {
       position: fixed;
       inset: 0;
-      pointer-events: none;
       overflow: hidden;
+      pointer-events: none;
       z-index: 1;
     }
 
-    .star {
+    .estrela {
       position: absolute;
-      font-size: 22px;
-      animation: ninjaStar linear infinite;
-      opacity: .9;
+      font-size: 24px;
+      animation: voar linear infinite;
+      opacity: 0.85;
     }
 
-    @keyframes ninjaStar {
-      from {
-        transform: translateX(-100px) rotate(0deg);
+    .estrela:nth-child(1) {
+      top: 10%;
+      animation-duration: 7s;
+    }
+
+    .estrela:nth-child(2) {
+      top: 25%;
+      animation-duration: 9s;
+      animation-delay: 2s;
+    }
+
+    .estrela:nth-child(3) {
+      top: 42%;
+      animation-duration: 6s;
+      animation-delay: 1s;
+    }
+
+    .estrela:nth-child(4) {
+      top: 60%;
+      animation-duration: 8s;
+      animation-delay: 3s;
+    }
+
+    .estrela:nth-child(5) {
+      top: 78%;
+      animation-duration: 7s;
+      animation-delay: 1s;
+    }
+
+    @keyframes voar {
+      0% {
+        left: -60px;
+        transform: rotate(0deg);
       }
-      to {
-        transform: translateX(110vw) rotate(720deg);
+
+      100% {
+        left: 110%;
+        transform: rotate(720deg);
       }
     }
 
-    .card {
+    /* CONVITE */
+    .pagina {
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 500px;
-      text-align: center;
-      border-radius: 24px;
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 15px;
+    }
+
+    .convite {
+      background: #080808;
+      border-radius: 22px;
       overflow: hidden;
-      background: #111;
-      box-shadow: 0 0 35px rgba(255, 80, 0, .45);
+      box-shadow:
+        0 0 20px rgba(255, 80, 0, 0.35),
+        0 0 60px rgba(255, 80, 0, 0.15);
     }
 
-    .imagem {
-      width: 100%;
+    /*
+      ESTA É A IMAGEM FINAL DO CONVITE.
+      O arquivo deve estar na mesma pasta do index.html.
+    */
+    .imagem-convite {
       display: block;
+      width: 100%;
       height: auto;
+      margin: 0;
     }
 
-    .conteudo {
-      padding: 20px;
+    /* ÁREA INTERATIVA */
+    .interativo {
+      padding: 22px 18px 25px;
+      text-align: center;
       background:
-        radial-gradient(circle at top, #3b0d05 0%, #120606 45%, #050505 100%);
+        linear-gradient(
+          180deg,
+          #160803 0%,
+          #0b0503 100%
+        );
     }
 
-    h1 {
-      margin: 0 0 8px;
-      font-size: 30px;
-    }
-
-    .idade {
-      color: #ff8a00;
-      font-size: 22px;
+    .titulo {
+      font-size: 27px;
       font-weight: bold;
-      margin-bottom: 18px;
+      margin: 0 0 5px;
     }
 
-    .info {
+    .subtitulo {
+      color: #ff9800;
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .informacao {
+      margin: 10px 0;
       font-size: 16px;
-      line-height: 1.6;
-      margin: 8px 0;
+      line-height: 1.45;
+    }
+
+    .endereco {
+      font-size: 14px;
+      color: #ddd;
+      margin-top: 4px;
     }
 
     .botoes {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: 20px;
+      gap: 11px;
+      margin-top: 22px;
     }
 
-    button,
     .botao {
+      display: block;
       width: 100%;
+      padding: 14px 16px;
       border: 0;
       border-radius: 12px;
-      padding: 14px;
+      text-decoration: none;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      text-decoration: none;
-      color: white;
+      color: #fff;
+    }
+
+    .agenda {
+      background: #37474f;
+    }
+
+    .localizacao {
       background: #e65100;
     }
 
-    .botao-agenda {
-      background: #263238;
-    }
-
-    .botao-whatsapp {
-      background: #25D366;
+    .whatsapp {
+      background: #25d366;
     }
 
     .musica {
-      margin-top: 18px;
-      font-size: 13px;
-      opacity: .8;
+      margin-top: 25px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.15);
     }
 
-    audio {
+    .musica-titulo {
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .youtube {
+      position: relative;
       width: 100%;
-      margin-top: 8px;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
     }
 
-    .mapa {
-      margin-top: 15px;
-      display: block;
-      color: white;
-      text-decoration: none;
-      background: #37474f;
-      padding: 12px;
-      border-radius: 10px;
+    .youtube iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
-    .aviso {
-      margin-top: 12px;
-      font-size: 13px;
-      color: #ddd;
+    .rodape {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    @media (max-width: 380px) {
+      .pagina {
+        padding: 8px;
+      }
+
+      .interativo {
+        padding: 18px 13px 22px;
+      }
+
+      .titulo {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="stars">
-  <div class="star" style="top:8%;animation-duration:7s;">✦</div>
-  <div class="star" style="top:22%;animation-duration:9s;animation-delay:2s;">✧</div>
-  <div class="star" style="top:40%;animation-duration:6s;animation-delay:1s;">✦</div>
-  <div class="star" style="top:58%;animation-duration:8s;animation-delay:3s;">✧</div>
-  <div class="star" style="top:76%;animation-duration:7s;animation-delay:1s;">✦</div>
-  <div class="star" style="top:90%;animation-duration:10s;animation-delay:4s;">✧</div>
-</div>
-
-<div class="container">
-
-  <div class="card">
-
-    <!-- IMAGEM OFICIAL DO CONVITE -->
-    <img
-      src="convite-naruto.png"
-      alt="Convite de aniversário do João Gabriel"
-      class="imagem"
-    >
-
-    <div class="conteudo">
-
-      <h1>João Gabriel</h1>
-
-      <div class="idade">
-        🎂 7 ANOS 🎂
-      </div>
-
-      <div class="info">
-        📅 <strong>02 de outubro de 2026</strong>
-      </div>
-
-      <div class="info">
-        ⏰ <strong>16h</strong>
-      </div>
-
-      <div class="info">
-        🏫 <strong>Dom Bosco - Colégio Bilíngue</strong>
-      </div>
-
-      <div class="info">
-        📍 Av. Fernando Vilela, 152 - Martins<br>
-        Uberlândia - MG
-      </div>
-
-      <a
-        class="mapa"
-        href="https://www.google.com/maps/search/?api=1&query=Av.+Fernando+Vilela,+152,+Martins,+Uberlândia,+MG"
-        target="_blank">
-        📍 Abrir localização
-      </a>
-
-      <div class="botoes">
-
-        <button
-          class="botao-agenda"
-          onclick="adicionarAgenda()">
-          🗓️ Adicionar à agenda
-        </button>
-
-        <a
-          class="botao botao-whatsapp"
-          href="https://wa.me/?text=🎉%20Você%20está%20convidado%20para%20o%20aniversário%20do%20João%20Gabriel!%20🎂%0A%0A🥷%207%20anos%0A📅%2002/10/2026%20às%2016h%0A🏫%20Dom%20Bosco%20-%20Colégio%20Bilíngue%0A📍%20Av.%20Fernando%20Vilela,%20152%20-%20Martins,%20Uberlândia%20-%20MG"
-          target="_blank">
-          💬 Compartilhar no WhatsApp
-        </a>
-
-      </div>
-
-      <div class="musica">
-        🎵 Blue Bird — Ikimonogakari
-      </div>
-
-      <div class="aviso">
-        Toque no player abaixo para ouvir a música.
-      </div>
-
-      <!--
-        IMPORTANTE:
-        O navegador bloqueia reprodução automática de música.
-        Por isso o visitante precisa tocar no player.
-      -->
-      <audio controls preload="none">
-        <source
-          src="https://www.youtube.com/watch?v=6T8Iy2lktgo"
-          type="audio/mpeg">
-        Seu navegador não suporta áudio.
-      </audio>
-
-    </div>
+  <!-- ESTRELAS NINJA -->
+  <div class="estrelas">
+    <div class="estrela">✦</div>
+    <div class="estrela">✧</div>
+    <div class="estrela">✦</div>
+    <div class="estrela">✧</div>
+    <div class="estrela">✦</div>
   </div>
-</div>
 
-<script>
-function adicionarAgenda() {
+  <main class="pagina">
 
-  const inicio = "20261002T160000";
-  const fim = "20261002T180000";
+    <section class="convite">
 
-  const titulo = encodeURIComponent(
-    "Aniversário João Gabriel - 7 anos"
-  );
+      <!-- =================================================
+           IMAGEM FINAL APROVADA
+           NÃO ALTERAR O NOME DO ARQUIVO
+           ================================================= -->
+      <img
+        src="./convite-naruto.png"
+        alt="Convite de aniversário do João Gabriel"
+        class="imagem-convite"
+      >
 
-  const local = encodeURIComponent(
-    "Dom Bosco - Colégio Bilíngue, Av. Fernando Vilela, 152 - Martins, Uberlândia - MG"
-  );
+      <!-- =================================================
+           PARTE INTERATIVA
+           ================================================= -->
+      <div class="interativo">
 
-  const detalhes = encodeURIComponent(
-    "Aniversário de 7 anos do João Gabriel."
-  );
+        <h1 class="titulo">
+          João Gabriel
+        </h1>
 
-  const url =
-    "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-    "&text=" + titulo +
-    "&dates=" + inicio + "/" + fim +
-    "&location=" + local +
-    "&details=" + detalhes;
+        <div class="subtitulo">
+          🥷 7 anos 🎂
+        </div>
 
-  window.open(url, "_blank");
-}
-</script>
+        <div class="informacao">
+          📅 <strong>02 de outubro de 2026</strong>
+        </div>
+
+        <div class="informacao">
+          ⏰ <strong>16h</strong>
+        </div>
+
+        <div class="informacao">
+          🏫 <strong>Dom Bosco - Colégio Bilíngue</strong>
+        </div>
+
+        <div class="informacao">
+          📍
+          <div class="endereco">
+            Av. Fernando Vilela, 152 - Martins<br>
+            Uberlândia - MG<br>
+            CEP 38400-458
+          </div>
+        </div>
+
+        <div class="botoes">
+
+          <!-- GOOGLE AGENDA -->
+          <button
+            class="botao agenda"
+            onclick="adicionarAgenda()">
+            🗓️ Adicionar à agenda
+          </button>
+
+          <!-- GOOGLE MAPS -->
+          <a
+            class="botao localizacao"
+            href="https://www.google.com/maps/search/?api=1&query=Av.+Fernando+Vilela,+152,+Martins,+Uberlândia,+MG"
+            target="_blank"
+            rel="noopener">
+            📍 Ver localização
+          </a>
+
+          <!-- WHATSAPP -->
+          <a
+            class="botao whatsapp"
+            href="https://wa.me/?text=🎉%20Você%20está%20convidado%20para%20o%20aniversário%20do%20João%20Gabriel!%20🥷%0A%0A🎂%207%20anos%0A📅%2002/10/2026%20às%2016h%0A🏫%20Dom%20Bosco%20-%20Colégio%20Bilíngue%0A📍%20Av.%20Fernando%20Vilela,%20152%20-%20Martins,%20Uberlândia%20-%20MG"
+            target="_blank"
+            rel="noopener">
+            💬 Compartilhar no WhatsApp
+          </a>
+
+        </div>
+
+        <!-- MÚSICA -->
+        <div class="musica">
+
+          <div class="musica-titulo">
+            🎵 <strong>Blue Bird — Ikimono-gakari</strong>
+          </div>
+
+          <div class="youtube">
+
+            <iframe
+              src="https://www.youtube.com/embed/6T8Iy2lktgo"
+              title="Blue Bird - Ikimono-gakari"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+
+          </div>
+
+        </div>
+
+        <div class="rodape">
+          🥷 Prepare-se para uma aventura ninja! 🥷
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+
+    function adicionarAgenda() {
+
+      const titulo =
+        encodeURIComponent(
+          "Aniversário João Gabriel - 7 anos"
+        );
+
+      const local =
+        encodeURIComponent(
+          "Dom Bosco - Colégio Bilíngue, Av. Fernando Vilela, 152 - Martins, Uberlândia - MG"
+        );
+
+      const detalhes =
+        encodeURIComponent(
+          "Aniversário de 7 anos do João Gabriel."
+        );
+
+      const inicio = "20261002T160000";
+      const fim = "20261002T180000";
+
+      const url =
+        "https://calendar.google.com/calendar/render" +
+        "?action=TEMPLATE" +
+        "&text=" + titulo +
+        "&dates=" + inicio + "/" + fim +
+        "&location=" + local +
+        "&details=" + detalhes;
+
+      window.open(url, "_blank");
+
+    }
+
+  </script>
 
 </body>
 </html>
